@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://da2wsfkwg1gh2"]
 
+[ext_resource type="PackedScene" uid="uid://ciktj4k4ygngx" path="res://scenes/character_ronin.tscn" id="1_rmnn5"]
+[ext_resource type="PackedScene" uid="uid://degaho87b4dqm" path="res://scenes/test_pickup.tscn" id="2_if5rx"]
 [ext_resource type="PackedScene" uid="uid://ciktj4k4ygngx" path="res://scenes/Ronins/character_ronin.tscn" id="1_rmnn5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vrwqx"]
@@ -18,3 +20,6 @@ shape = SubResource("SegmentShape2D_vrwqx")
 
 [node name="CharacterRonin" parent="." unique_id=1792477495 instance=ExtResource("1_rmnn5")]
 position = Vector2(162, 162)
+
+[node name="test pickup" parent="." unique_id=815839702 instance=ExtResource("2_if5rx")]
+position = Vector2(216, 164)

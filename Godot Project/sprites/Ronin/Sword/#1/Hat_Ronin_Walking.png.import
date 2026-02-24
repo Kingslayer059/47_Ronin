@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahy1oksvpxns"
-path="res://.godot/imported/Hat_Ronin.png-48e1fc02e6a9325e43c9c69f8e3db664.ctex"
+uid="uid://b1vlg53rlb71c"
+path="res://.godot/imported/Hat_Ronin_Walking.png-1817a75efbecde26a960195561c569a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Hat_Ronin/Hat_Ronin.png"
-dest_files=["res://.godot/imported/Hat_Ronin.png-48e1fc02e6a9325e43c9c69f8e3db664.ctex"]
+source_file="res://sprites/Ronin/Sword/#1/Hat_Ronin_Walking.png"
+dest_files=["res://.godot/imported/Hat_Ronin_Walking.png-1817a75efbecde26a960195561c569a8.ctex"]
 
 [params]
 

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ciktj4k4ygngx" path="res://scenes/Ronins/sword_ronin.tscn" id="1_rmnn5"]
 [ext_resource type="PackedScene" uid="uid://degaho87b4dqm" path="res://scenes/test_pickup.tscn" id="2_if5rx"]
 [ext_resource type="PackedScene" uid="uid://ye868sbugbad" path="res://scenes/Ronins/spear_ronin.tscn" id="2_ro66u"]
+[ext_resource type="PackedScene" uid="uid://cs7rn0mpk0seb" path="res://scenes/Ronins/kunai_ronin.tscn" id="4_d58p2"]
+[ext_resource type="Script" uid="uid://mtyjba4d8xl" path="res://scenes/misc/node_2d.gd" id="5_m6p5g"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vrwqx"]
 a = Vector2(321, 180)
@@ -28,3 +30,9 @@ position = Vector2(162, 162)
 
 [node name="test pickup" parent="." unique_id=815839702 instance=ExtResource("2_if5rx")]
 position = Vector2(216, 164)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1287661685]
+script = ExtResource("5_m6p5g")
+
+[node name="KunaiRonin" parent="Node2D" unique_id=1776933044 instance=ExtResource("4_d58p2")]
+position = Vector2(162, 162)

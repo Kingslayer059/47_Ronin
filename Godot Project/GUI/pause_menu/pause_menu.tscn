@@ -100,6 +100,15 @@ layout_mode = 2
 [node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" unique_id=2006450228 instance=ExtResource("3_rsqrg")]
 layout_mode = 2
 
+[node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" unique_id=185664476 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" unique_id=925301529 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" unique_id=1890942508 instance=ExtResource("3_rsqrg")]
+layout_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=7953218]
 layout_mode = 1
 anchors_preset = 8

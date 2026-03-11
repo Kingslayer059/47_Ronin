@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name KunaiRonin extends CharacterBody2D
 
 @export var speed = 60
 @export var jump_speed = -200
@@ -6,6 +6,9 @@ extends CharacterBody2D
 var combo_count: int = 0
 @onready var combo_timer: Timer = $ComboTimer
 @onready var parent = get_parent()
+
+# this is temporary, will change depending on if we need to make a character manager
+const INVENTORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/player_inventory.tres")
 
 var attack_index = 0
 var sheathing = false

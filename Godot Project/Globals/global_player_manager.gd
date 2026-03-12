@@ -16,7 +16,7 @@ func spawn_player(parent, spawn_position):
 	player = scene.instantiate()
 	player.name = "Player"
 	player.spawn_position = spawn_position
-	parent.add_child(player)
+	parent.add_child.call_deferred(player)
 	return player
 
 func load_ronins(path: String) -> Array:

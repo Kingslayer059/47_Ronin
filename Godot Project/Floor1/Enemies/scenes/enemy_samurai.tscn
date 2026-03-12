@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kiiyk"]
 radius = 7.0
-height = 28.0
+height = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40r68"]
 atlas = ExtResource("1_gddy4")
@@ -105,6 +105,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi7cw"]
+size = Vector2(35, 31.5)
+
 [node name="EnemySamurai" type="CharacterBody2D" unique_id=10856245]
 collision_layer = 4
 collision_mask = 3
@@ -117,5 +120,20 @@ shape = SubResource("CapsuleShape2D_kiiyk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1451966867]
 sprite_frames = SubResource("SpriteFrames_5afn6")
 animation = &"attack"
-frame = 5
-frame_progress = 1.0
+frame = 3
+frame_progress = 0.41467136
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1028163978]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1441799830]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1709819377]
+position = Vector2(11.5, 0.25)
+shape = SubResource("RectangleShape2D_yi7cw")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

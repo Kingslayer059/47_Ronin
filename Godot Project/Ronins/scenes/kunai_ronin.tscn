@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmxwyvflyxk6e" path="res://Ronins/sprites/#3/walking.png" id="7_tebv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njcak"]
-size = Vector2(11, 25)
+size = Vector2(10, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx4jv"]
 atlas = ExtResource("2_i020w")
@@ -396,10 +396,11 @@ animations = [{
 
 [node name="KunaiRonin" type="CharacterBody2D" unique_id=1005983935]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_jndqw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318996772]
-position = Vector2(-0.5, 3.5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_njcak")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113992663]

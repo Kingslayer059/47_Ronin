@@ -28,10 +28,7 @@ func load_ronins(path: String) -> Array:
 	return files
 	
 func spawn_ronin():
-	var ronin = load(ronins.pick_random()).instantiate()
-	ronin.spawn_position = ronin_spawn
-	add_child.call_deferred(ronin)
-	current_ronin = ronin
+	current_ronin  = PlayerManager.spawn_player(self, ronin_spawn)
 	current_ronin.tree_exiting.connect(_on_ronin_death)
 	
 func spawn_enemy():

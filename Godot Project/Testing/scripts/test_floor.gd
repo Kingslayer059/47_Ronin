@@ -61,4 +61,5 @@ func _on_ronin_death():
 	ronin_spawn = current_ronin.global_position
 	spawn_ronin()
 	for enemy in enemies:
-		enemy.player = current_ronin
+		if enemy:
+			enemy.player = current_ronin

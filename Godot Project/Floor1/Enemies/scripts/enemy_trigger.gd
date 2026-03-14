@@ -1,5 +1,5 @@
 extends Area2D
-@export var enemy_scene : PackedScene
+@onready var enemy_scene : PackedScene
 @onready var spawn_point = $Marker2D
 
 func spawn_enemy(player: CharacterBody2D):
@@ -7,7 +7,7 @@ func spawn_enemy(player: CharacterBody2D):
 		var enemy = enemy_scene.instantiate()
 		enemy.player = player
 		enemy.global_position = spawn_point.global_position
-		get_tree().current_scene.add_child(enemy)
+		get_tree().current_scene.add_child.call_deferred(enemy)
 		set_deferred("monitoring", false)
 
 

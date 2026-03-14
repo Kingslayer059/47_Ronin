@@ -133,6 +133,7 @@ func increase_speed(spd_inc_amount):
 
 
 func _on_hit_detection_area_entered(area: Area2D) -> void:
+	print("kunai ronin hit")
 	health -= 1
 	if health <= 0:
 		queue_free()

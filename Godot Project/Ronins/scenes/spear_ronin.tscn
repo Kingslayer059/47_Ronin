@@ -334,9 +334,7 @@ shape = SubResource("CapsuleShape2D_nmud1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113992663]
 sprite_frames = SubResource("SpriteFrames_6pewp")
-animation = &"attack_one"
-frame = 5
-frame_progress = 0.7213711
+animation = &"attack_up"
 
 [node name="ComboTimer" type="Timer" parent="." unique_id=1681577053]
 

@@ -35,7 +35,17 @@ func _process(delta: float) -> void:
 				2:
 					if !attacking:
 						attack(3, "attack_three")
-		elif !attacking and !jumping and attack_index == 0:
+		if attacking:
+			match attack_index:
+				1:
+					set_hitbox($Hitboxes/AttackOne, $AnimatedSprite2D.frame in [4, 5, 6])
+				2:
+					set_hitbox($Hitboxes/AttackOne, $AnimatedSprite2D.frame in [0, 1, 2])
+				3:
+					set_hitbox($Hitboxes/AttackThree, $AnimatedSprite2D.frame in [2, 3, 4])
+				4:
+					set_hitbox($Hitboxes/AttackUp, $AnimatedSprite2D.frame in [1, 2, 3])
+		elif !jumping and attack_index == 0:
 			if Input.is_action_just_pressed("space"):
 				$AnimatedSprite2D.play("jump")
 				jumping = true
@@ -71,12 +81,14 @@ func attack(attack_indx, attack) -> void:
 	if(1 < attack_indx && attack_indx < 4 && jumping):
 		return
 	$AnimatedSprite2D.play(attack)
-	hitboxes[attack_indx-1].monitoring = true
-	hitboxes[attack_indx-1].monitorable = true
-	hitboxes[attack_indx-1].visible = true
 	attack_index = attack_indx
 	attacking = true
 	$ComboTimer.stop()
+
+func set_hitbox(hitbox, on):
+	hitbox.monitoring = on
+	hitbox.monitorable = on
+	hitbox.visible = on
 
 func sheath() -> void:
 	$AnimatedSprite2D.play("sheath")
@@ -89,23 +101,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if sheathing:
 		sheathing = false
 	elif attack_index == 3:
-		hitboxes[attack_index-1].monitoring = false
-		hitboxes[attack_index-1].monitorable = false
-		hitboxes[attack_index-1].visible = false
 		sheath()
 	elif attack_index == 4:
-		hitboxes[attack_index-1].monitoring = false
-		hitboxes[attack_index-1].monitorable = false
-		hitboxes[attack_index-1].visible = false
 		if jumping:
 			jumping = false
 		attack_index = 0
 		timedout = false
 		attacking = false
 	elif attack_index > 0:
-		hitboxes[attack_index-1].monitoring = false
-		hitboxes[attack_index-1].monitorable = false
-		hitboxes[attack_index-1].visible = false
 		if jumping:
 			jumping = false
 			$ComboTimer.start(.1)
@@ -122,6 +125,7 @@ func _on_combo_timer_timeout() -> void:
 
 
 func _on_hit_detection_area_entered(area: Area2D) -> void:
+	print("spear ronin hit")
 	health -= 1
 	if health <= 0:
 		queue_free()

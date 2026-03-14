@@ -391,7 +391,7 @@ script = ExtResource("1_mwkte")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113992663]
 sprite_frames = SubResource("SpriteFrames_6pewp")
-animation = &"breathing"
+animation = &"attack_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318996772]
 position = Vector2(0, 1)

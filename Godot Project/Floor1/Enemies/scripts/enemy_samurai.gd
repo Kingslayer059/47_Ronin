@@ -33,9 +33,7 @@ func _process(delta: float) -> void:
 					$HitBox.scale.x = 1
 					$AnimatedSprite2D.play("walking")
 		"attacking":
-			$HitBox.monitoring = true
-			$HitBox.monitorable = true
-			$HitBox.visible = true
+			set_hitbox(0 < $AnimatedSprite2D.frame and $AnimatedSprite2D.frame < 4)
 			$AnimatedSprite2D.play("attack")
 			
 func _physics_process(delta):
@@ -44,7 +42,6 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if knocked_back:
-		print(velocity.x)
 		velocity.x = knockback_velocity
 		if knockback_velocity < 0:
 			knockback_velocity += 2
@@ -58,10 +55,17 @@ func _physics_process(delta):
 				state = "walking"
 	elif state == "walking":
 		velocity.x = ((direction*speed) - velocity.x) * delta * .75
+	else:
+		velocity.x = 0
 	move_and_slide()
 
 func walking(target, delta):
 	direction = (target.x - global_position.x)
+
+func set_hitbox(on):
+	$HitBox.monitoring = on
+	$HitBox.monitorable = on
+	$HitBox.visible = on
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	state = "waiting"
@@ -73,9 +77,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$HitBox.monitoring = false
-	$HitBox.monitorable = false
-	$HitBox.visible = false
 	if state == "attacking":
 		if near_player:
 			state = "waiting"
@@ -94,6 +95,7 @@ func _on_attack_timer_timeout() -> void:
 
 
 func _on_hit_detection_area_entered(area: Area2D) -> void:
+	print("enemy hit")
 	health -= 1
 	if(health <= 0):
 		queue_free()

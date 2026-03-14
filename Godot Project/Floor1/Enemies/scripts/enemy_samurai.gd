@@ -44,9 +44,9 @@ func _physics_process(delta):
 	if knocked_back:
 		velocity.x = knockback_velocity
 		if knockback_velocity < 0:
-			knockback_velocity += 2
+			knockback_velocity += 4
 		else:
-			knockback_velocity -= 2
+			knockback_velocity -= 4
 		
 		if -2 < knockback_velocity && knockback_velocity < 2:
 			knocked_back = false
@@ -93,11 +93,11 @@ func _on_attack_timer_timeout() -> void:
 	if state == "waiting":
 		state = "attacking"
 
-
 func _on_hit_detection_area_entered(area: Area2D) -> void:
 	print("enemy hit")
+	$Flash.play("hit")
 	health -= 1
 	if(health <= 0):
 		queue_free()
-	knockback_velocity = -60 if direction > 0 else 60
+	knockback_velocity = -100 if direction > 0 else 100
 	knocked_back = true

@@ -115,4 +115,4 @@ tile_set = SubResource("TileSet_aahfd")
 end = true
 left = true
 right = true
-section = "\"midair\""
+section = "midair"

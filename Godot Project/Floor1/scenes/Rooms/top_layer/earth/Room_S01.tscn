@@ -155,4 +155,4 @@ tile_set = SubResource("TileSet_ky071")
 start = true
 left = true
 right = true
-section = "\"earth\""
+section = "earth"

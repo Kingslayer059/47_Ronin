@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqr1uvn6wx265" path="res://Floor1/Enemies/scenes/enemy_samurai.tscn" id="4_4on45"]
 [ext_resource type="PackedScene" uid="uid://b1rthxnb77k8c" path="res://misc/scenes/room_info.tscn" id="5_3f67h"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ikvyn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qydqc"]
 texture = ExtResource("1_ynxp5")
 0:0/0 = 0
 1:0/0 = 0
@@ -83,7 +83,7 @@ texture = ExtResource("1_ynxp5")
 
 [sub_resource type="TileSet" id="TileSet_gjn77"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ikvyn")
+sources/0 = SubResource("TileSetAtlasSource_qydqc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcgul"]
 texture = ExtResource("2_3f67h")
@@ -133,8 +133,7 @@ position = Vector2(2, 37)
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("5_3f67h")]
 left = true
 right = true
-section = "\"earth\""
-path = "\"Room_00\""
+section = "earth"
 
 [connection signal="body_entered" from="EnemyTrigger" to="EnemyTrigger" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="EnemyTrigger" to="EnemyTrigger" method="_on_body_shape_entered"]

@@ -167,7 +167,7 @@ shape = SubResource("RectangleShape2D_pmc2y")
 end = true
 left = true
 right = true
-section = "\"earth\""
+section = "earth"
 
 [connection signal="body_entered" from="RoomTrigger" to="RoomTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="RoomTrigger" to="RoomTrigger" method="_on_body_exit"]

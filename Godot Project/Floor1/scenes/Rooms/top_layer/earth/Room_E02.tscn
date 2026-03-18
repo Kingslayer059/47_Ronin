@@ -244,7 +244,7 @@ shape = SubResource("RectangleShape2D_pmc2y")
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("5_425lw")]
 end = true
 left = true
-section = "\"earth\""
+section = "earth"
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=413933446]
 

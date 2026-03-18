@@ -7,7 +7,8 @@ extends Node2D
 	#"end" : load("res://Floor1/scenes/Rooms/top_layer/Room_End.tscn")
 }
 @onready var sub_layer = {
-	
+	"earth" : load_rooms("res://Floor1/scenes/Rooms/sub_layer/earth/"),
+	"midair" : load_rooms("res://Floor1/scenes/Rooms/sub_layer/midair/")
 }
 @onready var room_info = load("res://misc/scenes/room_info.tscn")
 
@@ -41,8 +42,10 @@ func generate_grid(x, y, section, prior):
 	}
 	var selection = []
 	if y == 0:
+		print("section=", section)
 		selection = top_layer[section]
 	else:
+		print("section=",section)
 		selection = sub_layer[section]
 	#print("Checkpoint 1 ", selection)
 	var polarity = true
@@ -77,7 +80,9 @@ func generate_grid(x, y, section, prior):
 			#print("Before ", pairing[0], ", ", pairing[1],": ", selection)
 			selection = search(selection, pairing[2], false)
 			#print("After ", pairing[0], ", ", pairing[1], ", ", pairing[2], ": ", selection)
-	grid[y][x] = load(selection.pick_random()).instantiate()
+	print("[", x, ", ", y, "] ", selection, grid[y][x].get_node("room_info").left, grid[y][x].get_node("room_info").right, grid[y][x].get_node("room_info").top, grid[y][x].get_node("room_info").bottom, grid[y][x].get_node("room_info").start, grid[y][x].get_node("room_info").end, section)
+	if selection.size() > 0:
+		grid[y][x] = load(selection.pick_random()).instantiate()
 	
 func search(array, attribute, polarity) -> Array:
 	var trimmed = []
@@ -104,7 +109,7 @@ func room_generation() -> Array:
 			grid[row].push_back(load("res://Floor1/scenes/Rooms/Room_Placeholder.tscn").instantiate())
 			grid[row][col].position.x = room_w * col
 	#grid[0][rng.randi_range(0, grid_w)] = top_layer
-	var temp = range(1, grid_w-1)
+	var temp = range(1, grid_w-2)
 	for i in range(0, grid_w/3):
 		var index = temp.pick_random()
 		grid[0][index].get_node("room_info").section = "switch"
@@ -127,6 +132,10 @@ func room_generation() -> Array:
 			else:
 				for row in range(0, grid_h):
 					grid[row][col].get_node("room_info").section = "earth"
+	if switch: 
+		for row in range(0, grid_h):
+			grid[row][grid_w-2].get_node("room_info").section = "midair"
+			grid[row][grid_w-2].get_node("room_info").end = true
 	for row in range(0, grid_h):
 		grid[row][grid_w-1].get_node("room_info").section = "earth"
 	temp = rng.randi_range(0, grid_w-1)
@@ -143,7 +152,7 @@ func room_generation() -> Array:
 		temp2 = rng.randi_range(0, grid_w-1)
 	grid[0][temp2].get_node("room_info").end = true
 	#print("Section of End: ", grid[0][temp2].get_node("room_info").section)
-	var spawn_point = Vector2(room_w * temp, room_h * 0)
+	var spawn_point = Vector2(room_w * temp, room_h * 0 + 40)
 	generate_grid(temp, 0, "earth", {"connected" : true, "x" : temp, "y" : 0, "section" : "earth"})
 	#rooms.push_back(load("res://Floor1/scenes/Rooms/top_layer/earth/Room_Start.tscn").instantiate())
 	#add_child.call_deferred(rooms[0])

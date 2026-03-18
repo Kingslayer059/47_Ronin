@@ -189,7 +189,7 @@ position = Vector2(-50, 37)
 
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("6_aa8yh")]
 right = true
-section = "\"earth\""
+section = "earth"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1272938303]
 

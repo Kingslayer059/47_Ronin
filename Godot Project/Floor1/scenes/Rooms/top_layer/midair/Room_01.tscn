@@ -120,4 +120,4 @@ tile_set = SubResource("TileSet_kof16")
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("3_jkypc")]
 left = true
 right = true
-section = "\"midair\""
+section = "midair"

@@ -115,4 +115,4 @@ tile_set = SubResource("TileSet_pmvpt")
 start = true
 left = true
 right = true
-section = "\"midair\""
+section = "midair"

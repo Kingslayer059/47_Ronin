@@ -231,7 +231,7 @@ tile_set = SubResource("TileSet_euc2v")
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("4_3vsuj")]
 start = true
 right = true
-section = "\"earth\""
+section = "earth"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1515750364]
 

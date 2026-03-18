@@ -223,7 +223,7 @@ shape = SubResource("RectangleShape2D_pmc2y")
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("5_77mmx")]
 end = true
 right = true
-section = "\"earth\""
+section = "earth"
 
 [node name="Background2" type="TileMapLayer" parent="." unique_id=1261212718]
 visibility_layer = 2

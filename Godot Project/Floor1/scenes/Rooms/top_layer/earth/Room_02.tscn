@@ -132,7 +132,7 @@ position = Vector2(0, 43)
 [node name="room_info" parent="." unique_id=838746514 instance=ExtResource("5_vb8ka")]
 left = true
 right = true
-section = "\"earth\""
+section = "earth"
 
 [connection signal="body_entered" from="EnemyTrigger" to="EnemyTrigger" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="EnemyTrigger" to="EnemyTrigger" method="_on_body_shape_entered"]

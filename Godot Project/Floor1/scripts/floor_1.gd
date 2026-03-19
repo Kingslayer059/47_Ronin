@@ -11,6 +11,7 @@ var enemies = []
 var current_ronin : CharacterBody2D
 
 func _ready():
+	GameEvents.floor_count = GameEvents.floor_count + 1
 	ronin_spawn = dimensions[1]
 	spawn_ronin()
 	
@@ -29,7 +30,7 @@ func spawn_ronin():
 	camera.make_current()
 	#print("Ronin Spawn? ", dimensions[1])
 	current_ronin.speed = 200
-	current_ronin.jump_speed = -250
+	current_ronin.jump_speed = -275
 	current_ronin.add_child(camera)
 
 func load_ronin(path: String) -> Array:

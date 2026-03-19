@@ -7,3 +7,5 @@ extends Node2D
 @export var bottom : bool = false
 @export var section : String
 @export var keyword : String = "Placeholder"
+@export var x : int = -1
+@export var y : int = -1

@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 			GameEvents.interact.emit()
 		if Input.is_action_just_pressed("noclip"):
 			gravity = 0
+			get_node("CollisionShape2D").disabled = true
 		
 		if Input.is_action_just_pressed("attack"):
 			if Input.is_action_pressed("ui_up"):
@@ -53,6 +54,10 @@ func _process(delta: float) -> void:
 				4:
 					set_hitbox($Hitboxes/AttackUp, $AnimatedSprite2D.frame in [1, 2, 3])
 		elif !jumping and !knocked_back and attack_index == 0:
+			if is_on_floor() and Input.is_action_just_pressed("ui_down"):
+				set_collision_mask_value(5, false)
+				await get_tree().create_timer(0.3).timeout
+				set_collision_mask_value(5, true)
 			if Input.is_action_just_pressed("space"):
 				$AnimatedSprite2D.play("jump")
 				jumping = true

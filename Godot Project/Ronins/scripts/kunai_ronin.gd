@@ -159,7 +159,7 @@ func _on_hit_detection_area_entered(area: Area2D) -> void:
 	if area.get_parent() is CharacterBody2D:
 		$Flash.play("hit")
 		print("kunai ronin hit")
-		knockback_velocity = 100 if area.get_parent().direction > 0 else -100
+		knockback_velocity = 100 if area.get_parent().direction.x > 0 else -100
 		knocked_back = true
 		health -= 1
 		if health <= 0:

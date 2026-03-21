@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfht5ujgsqopx"
-path="res://.godot/imported/attack.png-66ba8d0c5def009aac38062fcd3e0dc2.ctex"
+uid="uid://cvco3najbjya0"
+path="res://.godot/imported/sting.png-2a9fbbb106891efdfb0df761952800ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Floor1/Enemies/sprites/attack.png"
-dest_files=["res://.godot/imported/attack.png-66ba8d0c5def009aac38062fcd3e0dc2.ctex"]
+source_file="res://Floor1/Enemies/sprites/wasp/sting.png"
+dest_files=["res://.godot/imported/sting.png-2a9fbbb106891efdfb0df761952800ca.ctex"]
 
 [params]
 

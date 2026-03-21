@@ -3,9 +3,10 @@ extends Node2D
 @onready var kunai = load("res://misc/scenes/kunai.tscn")
 @onready var ronins = load_ronins("res://Ronins/scenes/")
 @onready var samurai = load("res://Floor1/Enemies/scenes/enemy_samurai.tscn")
+@onready var wasp = load("res://Floor1/Enemies/scenes/enemy_wasp.tscn")
 
 var ronin_spawn = Vector2(10, 170)
-var enemy_spawn = Vector2(300, 170)
+var enemy_spawn = Vector2(300, 100)
 
 var enemies = []
 
@@ -32,7 +33,7 @@ func spawn_ronin():
 	current_ronin.tree_exiting.connect(_on_ronin_death)
 	
 func spawn_enemy():
-	var enemy = samurai.instantiate()
+	var enemy = wasp.instantiate()
 	enemy.spawn_position = enemy_spawn
 	enemy.player = current_ronin
 	add_child.call_deferred(enemy)

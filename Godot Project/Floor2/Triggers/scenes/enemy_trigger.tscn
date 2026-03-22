@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://duyxmpafm8t5o"]
+
+[ext_resource type="Script" uid="uid://uchtukfmlop3" path="res://Floor2/Triggers/scripts/enemy_trigger.gd" id="1_aqj4n"]
+[ext_resource type="PackedScene" uid="uid://cqr1uvn6wx265" path="res://Floor1/Enemies/scenes/enemy_samurai.tscn" id="2_ihhj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcgul"]
+size = Vector2(478, 255)
+
+[node name="EnemyTrigger" type="Area2D" unique_id=1541612044]
+script = ExtResource("1_aqj4n")
+enemy_scene = ExtResource("2_ihhj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=843481134]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mcgul")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=193733582]
+position = Vector2(0, 47)

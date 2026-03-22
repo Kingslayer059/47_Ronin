@@ -36,4 +36,5 @@ modulate = Color(0.88235295, 0.88235295, 0.88235295, 0.9411765)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1010591502]
 sprite_frames = SubResource("SpriteFrames_xsqov")
+autoplay = "default"
 frame_progress = 0.07332264

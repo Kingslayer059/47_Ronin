@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://4761sl8djbs2"]
+
+[ext_resource type="Script" uid="uid://no5cqf1mv4qs" path="res://Floor2/scripts/floor_2.gd" id="1_x1qc7"]
+[ext_resource type="Script" uid="uid://bae642x6g4tmm" path="res://Floor2/scripts/room_manager.gd" id="2_gbf0o"]
+[ext_resource type="Script" uid="uid://cthn3t4fivo8w" path="res://Floor2/scripts/enemy_manager.gd" id="3_x1qc7"]
+[ext_resource type="Script" uid="uid://dihle7034hqf5" path="res://Floor2/scripts/special_manager.gd" id="4_gbf0o"]
+[ext_resource type="Script" uid="uid://cljbmftomi2a8" path="res://Floor2/scripts/boss_manager.gd" id="5_kgmxb"]
+
+[node name="Start" type="Node2D" unique_id=1468128343]
+script = ExtResource("1_x1qc7")
+
+[node name="RoomManager" type="Node2D" parent="." unique_id=1420800065]
+script = ExtResource("2_gbf0o")
+
+[node name="EnemyManager" type="Node2D" parent="." unique_id=720214965]
+script = ExtResource("3_x1qc7")
+
+[node name="SpecialManager" type="Node2D" parent="." unique_id=895355054]
+script = ExtResource("4_gbf0o")
+
+[node name="BossManager" type="Node2D" parent="." unique_id=591040355]
+script = ExtResource("5_kgmxb")

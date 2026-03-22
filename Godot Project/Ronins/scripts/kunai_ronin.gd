@@ -20,6 +20,7 @@ var jumping = false
 var jump_cap = 2
 var curr_jump = 0
 var knocked_back = false
+var was_on_floor = true
 
 var health = 3
 
@@ -59,7 +60,7 @@ func _process(delta: float) -> void:
 				$AnimatedSprite2D.frame = 1
 			if velocity.y >= 90:
 				$AnimatedSprite2D.frame = 2
-			if velocity.y == 0 and is_on_floor():
+			if !was_on_floor and is_on_floor():
 				curr_jump = 0
 				jumping = false
 		elif !attacking and !jumping and !knocked_back and attack_index == 0:
@@ -79,7 +80,7 @@ func _process(delta: float) -> void:
 				$AnimatedSprite2D.play("walking")
 			else:
 				$AnimatedSprite2D.play("breathing")
-	
+	was_on_floor = is_on_floor()
 	
 
 func _physics_process(delta):

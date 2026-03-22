@@ -57,7 +57,6 @@ func _process(delta: float) -> void:
 				4:
 					set_hitbox($Hitboxes/AttackUp, $AnimatedSprite2D.frame in [1, 2, 3])
 		elif jumping:
-			print(is_on_floor() and !was_on_floor)
 			if velocity.y >= -200:
 				$AnimatedSprite2D.frame = 0
 			if velocity.y >= -90:

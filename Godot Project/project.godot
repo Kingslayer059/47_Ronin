@@ -18,15 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneLoader="*uid://cms4760ux2bj5"
-SaveManager="*uid://ph65jp8jymtk"
 PauseMenu="*uid://b3phf0po0ogvr"
+SaveManager="*uid://cnhe5sod5iwdw"
 PlayerManager="*uid://clmcb38j63xqe"
 GameEvents="*uid://o1x0pnwxuvjr"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=140
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

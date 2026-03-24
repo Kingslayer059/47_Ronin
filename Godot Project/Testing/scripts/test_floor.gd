@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var bullet = load("res://misc/scenes/bullet.tscn")
 @onready var ronins = load_ronins("res://Ronins/scenes/")
 @onready var samurai = load("res://Floor1/Enemies/scenes/enemy_samurai.tscn")
 @onready var wasp = load("res://Floor1/Enemies/scenes/enemy_wasp.tscn")
@@ -40,12 +39,6 @@ func spawn_enemy():
 	add_child.call_deferred(enemy)
 	enemy.tree_exiting.connect(_on_enemy_death)
 	enemies.push_back(enemy)
-
-func shoot(direction, position):
-	var instance = bullet.instantiate()
-	instance.direction.x = -1 if direction else 1
-	instance.spwnPos = position
-	add_child.call_deferred(instance)
 
 func _on_ronin_death():
 	ronin_spawn = current_ronin.global_position

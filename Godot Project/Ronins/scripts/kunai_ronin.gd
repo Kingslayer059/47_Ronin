@@ -2,7 +2,6 @@ class_name KunaiRonin extends BaseRonin
 
 var combo_count: int = 0
 @onready var combo_timer: Timer = $ComboTimer
-@onready var parent = get_parent()
 @onready var knockback_velocity = 0
 @onready var kunai = load("res://misc/scenes/kunai.tscn")
 

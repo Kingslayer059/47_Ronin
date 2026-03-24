@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var speed = 20
 @onready var gravity = 500
 @onready var knockback_velocity = 0
-@onready var parent = get_parent()
+@onready var bullet = load("res://misc/scenes/bullet.tscn")
 
 var spawn_position : Vector2
 var player : CharacterBody2D
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 				$AnimatedSprite2D.flip_h = false
 				$HitDetection.scale.x = 1
 		"shooting":
-			parent.shoot($AnimatedSprite2D.flip_h, global_position)
+			shoot($AnimatedSprite2D.flip_h, global_position)
 			state = "attacking"
 		"attacking":
 			$AnimatedSprite2D.play("shoot")
@@ -60,6 +60,12 @@ func _physics_process(delta):
 func waiting(target):
 	direction.x = (target.x - global_position.x)
 	
+func shoot(direction, position):
+	var instance = bullet.instantiate()
+	instance.direction.x = -1 if direction else 1
+	instance.spwnPos = position
+	add_child.call_deferred(instance)
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 		$ShootTimer.start(1)
 		state = "waiting"

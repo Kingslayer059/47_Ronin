@@ -48,4 +48,6 @@ func _on_ronin_death():
 			enemy.player = current_ronin
 			
 func _on_enemy_death():
+	await get_tree().create_timer(3).timeout
 	spawn_enemy()
+	pass

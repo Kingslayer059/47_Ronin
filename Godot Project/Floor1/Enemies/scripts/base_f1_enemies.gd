@@ -1,1 +1,0 @@
-class_name Floor1Enemies extends CharacterBody2D

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c10ev5ytw5bgp" path="res://Homebase/sprites/teaset.png" id="3_tgyya"]
 [ext_resource type="PackedScene" uid="uid://c0ome6crdc44u" path="res://Ronins/scenes/homebase_ronin.tscn" id="4_tgyya"]
 [ext_resource type="PackedScene" uid="uid://fngjev4wnngb" path="res://Homebase/scenes/gacha.tscn" id="6_uus8i"]
+[ext_resource type="Script" uid="uid://dem7j8jo3n2ok" path="res://Homebase/scenes/exit_gacha_area.gd" id="7_rrjah"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ryt6"]
 a = Vector2(8, 37)
@@ -94,7 +95,6 @@ script = ExtResource("1_wgnfd")
 [node name="BlackBars" type="ColorRect" parent="." unique_id=698908415]
 offset_right = 320.0
 offset_bottom = 180.0
-mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1630013448]
@@ -120,7 +120,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 
 [node name="Tengu" type="AnimatedSprite2D" parent="Background/Tengu" unique_id=1471361361]
 position = Vector2(93, 69)
@@ -147,7 +146,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 
 [node name="GachaPlay" type="Area2D" parent="Background/Gatcha" unique_id=1467693849]
 collision_layer = 0
@@ -164,7 +162,6 @@ offset_left = 70.0
 offset_top = 43.0
 offset_right = 110.0
 offset_bottom = 83.0
-mouse_filter = 2
 
 [node name="Leave" type="Area2D" parent="Background/Door" unique_id=1711379006]
 
@@ -183,29 +180,28 @@ collision_mask = 0
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_uus8i")
 
-[node name="ExitGachaArea" type="Area2D" parent="." unique_id=397006395]
-position = Vector2(162, 91)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGachaArea" unique_id=641412345]
-position = Vector2(-92, -1)
-shape = SubResource("RectangleShape2D_rrjah")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExitGachaArea" unique_id=1649814398]
-position = Vector2(-2, 65.75)
-shape = SubResource("RectangleShape2D_xsahf")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ExitGachaArea" unique_id=1211739650]
-position = Vector2(-2, -66.5)
-shape = SubResource("RectangleShape2D_xsahf")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="ExitGachaArea" unique_id=166696209]
-position = Vector2(92, 0)
-shape = SubResource("RectangleShape2D_rrjah")
-
 [node name="Gacha" parent="." unique_id=949723592 instance=ExtResource("6_uus8i")]
 visible = false
 position = Vector2(162, 91)
 
+[node name="ExitGachaArea" type="Area2D" parent="Gacha" unique_id=397006395]
+script = ExtResource("7_rrjah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gacha/ExitGachaArea" unique_id=641412345]
+position = Vector2(-92, -1)
+shape = SubResource("RectangleShape2D_rrjah")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Gacha/ExitGachaArea" unique_id=1649814398]
+position = Vector2(-2, 65.75)
+shape = SubResource("RectangleShape2D_xsahf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Gacha/ExitGachaArea" unique_id=1211739650]
+position = Vector2(-2, -66.5)
+shape = SubResource("RectangleShape2D_xsahf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Gacha/ExitGachaArea" unique_id=166696209]
+position = Vector2(92, 0)
+shape = SubResource("RectangleShape2D_rrjah")
+
 [connection signal="area_entered" from="Background/Gatcha/GachaPlay" to="." method="_on_gacha_play_area_entered"]
 [connection signal="area_exited" from="Background/Gatcha/GachaPlay" to="." method="_on_gacha_play_area_exited"]
-[connection signal="input_event" from="ExitGachaArea" to="." method="_on_exit_gacha_area_input_event"]

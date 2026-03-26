@@ -1,6 +1,7 @@
 class_name SwordRonin extends BaseRonin
 
 var spawn_position : Vector2
+var moveable = true
 
 func _ready():
 	speed = 50
@@ -18,5 +19,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	velocity.y += gravity * delta
 
-	velocity.x = Input.get_axis("ui_left", "ui_right") * speed
+	velocity.x = Input.get_axis("ui_left", "ui_right") * speed if moveable else 0
+	
 	move_and_slide()

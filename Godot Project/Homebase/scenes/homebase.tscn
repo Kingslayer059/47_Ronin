@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cly3axdusxpo6" path="res://Homebase/scripts/homebase.gd" id="1_wgnfd"]
 [ext_resource type="Texture2D" uid="uid://dwxjqlwcm2218" path="res://Homebase/sprites/tengu.png" id="2_dho7p"]
 [ext_resource type="Texture2D" uid="uid://c10ev5ytw5bgp" path="res://Homebase/sprites/teaset.png" id="3_tgyya"]
-[ext_resource type="PackedScene" uid="uid://c0ome6crdc44u" path="res://Ronins/scenes/homebase_ronin.tscn" id="4_tgyya"]
+[ext_resource type="PackedScene" uid="uid://c0ome6crdc44u" path="res://Homebase/scenes/homebase_ronin.tscn" id="4_tgyya"]
 [ext_resource type="PackedScene" uid="uid://fngjev4wnngb" path="res://Homebase/scenes/gacha.tscn" id="6_uus8i"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ryt6"]

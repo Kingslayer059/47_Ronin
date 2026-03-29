@@ -19,9 +19,64 @@ var curr_jump = 0
 var knocked_back = false
 var was_on_floor = true
 
+enum ColorOption {RED, BLUE, BROWN, GREEN, PURPLE}
+enum HeadOption {WRAP, HAIR, CHONMAGE}
+
+@export var head: HeadOption = HeadOption.WRAP :
+	set(value):
+		head = value
+		if is_node_ready():
+			apply_variant()
+
+@export var color: ColorOption = ColorOption.PURPLE :
+	set(value):
+		color = value
+		if is_node_ready():
+			apply_variant()
+
+func apply_variant():
+	var color_map = {
+		ColorOption.RED: "Red",
+		ColorOption.BLUE: "Blue",
+		ColorOption.BROWN: "Brown",
+		ColorOption.GREEN: "Green",
+		ColorOption.PURPLE: "Purple"
+	}
+	
+	var head_map = {
+		HeadOption.WRAP: "Wrap",
+		HeadOption.HAIR: "Hair",
+		HeadOption.CHONMAGE: "Chonmage"
+	}
+	
+	var base_path = "res://Ronins/sprites/Kunai/%s/%s/" % [head_map[head], color_map[color]]
+	
+	var sheet_map = {
+		"breathing":   load(base_path + "breathing.png"),
+		"walking":   load(base_path + "walking.png"),
+		"attack_one": load(base_path + "attacking.png"),
+		"attack_two": load(base_path + "attacking.png"),
+		"attack_three": load(base_path + "attacking.png"),  
+		"attack_up": load(base_path + "up-attack.png"),
+		"jump":   load(base_path + "jump.png"),
+		"sheath":   load(base_path + "attacking.png"),
+		"death":  load(base_path + "death.png"),
+	}
+	
+	var frames = $AnimatedSprite2D.sprite_frames
+	for anim_name in frames.get_animation_names():
+		for i in frames.get_frame_count(anim_name):
+			var atlas = frames.get_frame_texture(anim_name, i)
+			if atlas == null:
+				continue
+			if not atlas is AtlasTexture:
+				continue
+			atlas.atlas = sheet_map.get(anim_name)
+
 func _ready() -> void:
 	#PlayerManager.player = self
 	global_position = spawn_position
+	apply_variant()
 
 func _process(delta: float) -> void:
 	if !sheathing:

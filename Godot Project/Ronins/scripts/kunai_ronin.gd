@@ -18,6 +18,7 @@ var jump_cap = 2
 var curr_jump = 0
 var knocked_back = false
 var was_on_floor = true
+var dying = false
 
 enum ColorOption {RED, BLUE, BROWN, GREEN, PURPLE}
 enum HeadOption {WRAP, HAIR, CHONMAGE}
@@ -60,6 +61,7 @@ func apply_variant():
 		"attack_up": load(base_path + "up-attack.png"),
 		"jump":   load(base_path + "jump.png"),
 		"sheath":   load(base_path + "attacking.png"),
+		"reload":   load(base_path + "attacking.png"),
 		"death":  load(base_path + "death.png"),
 	}
 	
@@ -79,7 +81,7 @@ func _ready() -> void:
 	apply_variant()
 
 func _process(delta: float) -> void:
-	if !sheathing:
+	if !dying and !sheathing:
 		if Input.is_action_just_pressed("interact"):
 			GameEvents.interact.emit()
 		if Input.is_action_just_pressed("noclip"):
@@ -149,15 +151,15 @@ func _physics_process(delta):
 			knocked_back = false
 			velocity.x = 0
 	
-	elif !attacking && $ComboTimer.is_stopped():
+	elif !dying and !attacking && $ComboTimer.is_stopped():
 		velocity.x = Input.get_axis("ui_left", "ui_right") * speed
-	elif !jumping && !sheathing:
+	elif !dying and !jumping && !sheathing:
 		velocity.x = 0
 		
 	move_and_slide()
 
 	# Only allow jumping up to cap
-	if Input.is_action_just_pressed("space") and curr_jump < jump_cap:
+	if !dying and Input.is_action_just_pressed("space") and curr_jump < jump_cap:
 		curr_jump = curr_jump + 1
 		velocity.y = jump_speed
 
@@ -229,8 +231,11 @@ func _on_hit_detection_area_entered(area: Area2D) -> void:
 	if area.get_parent() is CharacterBody2D:
 		$Flash.play("hit")
 		print("kunai ronin hit")
-		knockback_velocity = 100 if area.get_parent().direction.x > 0 else -100
+		knockback_velocity = 60 if area.get_parent().direction.x > 0 else -60
 		knocked_back = true
-		
 		# take_damage declared in base_ronin, takes damage amount as argument
-		take_damage(1)
+		if take_damage(1):
+			dying = true
+			$AnimatedSprite2D.play("death")
+			await $AnimatedSprite2D.animation_finished
+			death()

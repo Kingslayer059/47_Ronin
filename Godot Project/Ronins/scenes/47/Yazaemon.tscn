@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6o6rqsrgvlt4" path="res://Ronins/sprites/Sword/Chonmage/Blue/up_attack.png" id="3_idtn5"]
 [ext_resource type="Texture2D" uid="uid://da87qiy67pxmx" path="res://Ronins/sprites/Sword/Chonmage/Blue/walking.png" id="3_scbly"]
 [ext_resource type="Texture2D" uid="uid://clo1cehs8r2my" path="res://Ronins/sprites/Sword/Chonmage/Blue/breathing.png" id="4_p2sil"]
+[ext_resource type="Texture2D" uid="uid://bp3ywkcqrwoyw" path="res://Ronins/sprites/Sword/Hat/Blue/death.png" id="6_8umtl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_um34y"]
 resource_local_to_scene = true
@@ -148,6 +149,18 @@ region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myej1"]
 atlas = ExtResource("4_p2sil")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qai3"]
+atlas = ExtResource("6_8umtl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3v62"]
+atlas = ExtResource("6_8umtl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opo8h"]
+atlas = ExtResource("6_8umtl")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4pym"]
@@ -329,6 +342,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8qai3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3v62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opo8h")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y4pym")
 }, {
 "duration": 1.0,
@@ -444,7 +471,9 @@ color = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113992663]
 material = SubResource("ShaderMaterial_um34y")
 sprite_frames = SubResource("SpriteFrames_6pewp")
-animation = &"walking"
+animation = &"death"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318996772]
 position = Vector2(0, 1)

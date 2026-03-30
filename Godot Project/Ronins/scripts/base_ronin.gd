@@ -17,10 +17,11 @@ signal died(ronin)
 func _ready():
 	health = max_health
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int) -> bool:
 	health -= amount
-	if health <- 0:
-		death()
+	if health <= 0:
+		return true
+	return false
 
 func death() -> void:
 	died.emit(self)

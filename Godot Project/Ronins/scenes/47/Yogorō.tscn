@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwi0lunh52baw" path="res://Ronins/scripts/kunai_ronin.gd" id="1_cdmcs"]
 [ext_resource type="Shader" uid="uid://ct86xqawakua3" path="res://misc/scripts/hit_effect.gdshader" id="2_35u80"]
+[ext_resource type="Texture2D" uid="uid://bksho4scbxec0" path="res://Ronins/sprites/Kunai/Wrap/Blue/death.png" id="3_rrm1x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0hru"]
 radius = 5.0
@@ -101,6 +102,18 @@ region = Rect2(0, 0, 32, 32)
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i66jo"]
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwejv"]
+atlas = ExtResource("3_rrm1x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epolo"]
+atlas = ExtResource("3_rrm1x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kkgy"]
+atlas = ExtResource("3_rrm1x")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x48or"]
@@ -276,6 +289,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kwejv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epolo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kkgy")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x48or")
 }, {
 "duration": 1.0,
@@ -397,7 +424,9 @@ shape = SubResource("CapsuleShape2D_q0hru")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113992663]
 material = SubResource("ShaderMaterial_yygvq")
 sprite_frames = SubResource("SpriteFrames_6pewp")
-animation = &"reload"
+animation = &"death"
+frame = 2
+frame_progress = 1.0
 
 [node name="ComboTimer" type="Timer" parent="." unique_id=1681577053]
 

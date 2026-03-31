@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name EnemyGunman extends Floor1Enemies
 
 @onready var state = "waiting"
 @onready var speed = 20
@@ -10,14 +10,12 @@ var spawn_position : Vector2
 var player : CharacterBody2D
 var direction = Vector2.ZERO
 var yonder = 0
-var health = 3
 
 var near_player = false
 var knocked_back = false
 
 func _ready() -> void:
-	#this line of code messes up the enemy trigger logic, as it overrides the global_position after it is set by the enemy trigger
-	#global_position = spawn_position
+	super()
 	$ShootTimer.start(2)
 
 func _process(delta: float) -> void:
@@ -79,8 +77,9 @@ func _on_shoot_timer_timeout() -> void:
 func _on_hit_detection_area_entered(area: Area2D) -> void:
 	print("gunman hit")
 	$Flash.play("hit")
-	health -= 1
-	if(health <= 0):
-		queue_free()
+	
 	knockback_velocity = -100 if direction.x > 0 else 100
 	knocked_back = true
+	
+	# take_damage declared in base_enemy_floor1, takes damage amount as argument
+	take_damage(1)

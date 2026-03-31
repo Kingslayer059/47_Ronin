@@ -27,14 +27,14 @@ func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		get_tree().quit()
 	
-func _on_ronin_death():
+func _on_ronin_death(ronin):
 	ronin_spawn = current_ronin.global_position
 	spawn_ronin()
 	GameEvents.ronin_death.emit()
 	
 func spawn_ronin():
 	current_ronin  = PlayerManager.spawn_player(self, ronin_spawn)
-	current_ronin.tree_exiting.connect(_on_ronin_death)
+	current_ronin.died.connect(_on_ronin_death)
 	var camera = Camera2D.new()
 	camera.offset = Vector2(0, -20)
 	camera.limit_left = -240

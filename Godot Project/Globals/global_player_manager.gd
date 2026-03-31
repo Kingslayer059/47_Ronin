@@ -8,11 +8,12 @@ var ronins = []
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	ronins = load_ronins("res://Ronins/scenes/")
+	ronins = load_ronins("res://Ronins/scenes/47")
 	rng.randomize()
-
+ 
 func spawn_player(parent, spawn_position):
 	var scene = load(ronins.pick_random())
+	print(scene)
 	player = scene.instantiate()
 	player.name = "Player"
 	player.spawn_position = spawn_position

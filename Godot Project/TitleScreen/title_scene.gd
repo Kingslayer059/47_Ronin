@@ -12,7 +12,6 @@ func _ready():
 	go_to_credits()
 	close_title_screen()
 	
-	pass
 
 func set_title_screen():
 	button_start.pressed.connect(start_game)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bk8pew8o0wgcn"]
+
+[ext_resource type="Script" uid="uid://chwnpdu7ar5du" path="res://Floor1/Enemies/scripts/base_enemy_floor1.gd" id="1_1n0qx"]
+
+[node name="BaseEnemyFloor1" type="Node2D" unique_id=704091258]
+script = ExtResource("1_1n0qx")

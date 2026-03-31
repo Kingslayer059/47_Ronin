@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name EnemySamurai extends Floor1Enemies
 
 @onready var state = "walking"
 @onready var speed = 20
@@ -9,7 +9,6 @@ extends CharacterBody2D
 var spawn_position : Vector2
 var player : CharacterBody2D
 var direction = Vector2.ZERO
-var health = 3
 
 var near_player = false
 var knocked_back = false
@@ -100,8 +99,9 @@ func _on_attack_timer_timeout() -> void:
 func _on_hit_detection_area_entered(area: Area2D) -> void:
 	print("enemy hit")
 	$Flash.play("hit")
-	health -= 1
-	if(health <= 0):
-		queue_free()
+	
 	knockback_velocity = -100 if direction.x > 0 else 100
 	knocked_back = true
+	
+	# take_damage declared in base_enemy_floor1, takes damage amount as argument
+	take_damage(1)

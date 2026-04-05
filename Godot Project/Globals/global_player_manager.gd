@@ -47,6 +47,7 @@ func _on_player_died(ronin):
 
 func add_coins(amount: int) -> void:
 	coins += amount
+	print("coins added")
 	coins_changed.emit(coins)
 
 func spend_coins(amount: int) -> bool:

@@ -15,12 +15,9 @@ func _ready():
 	area_2d.body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
-	if not body.is_in_group("Player"):
-		return
-	area_2d.body_entered.disconnect(_on_body_entered)
-	if item_data:
+	if body.is_in_group("Player") and item_data:  # check for player collision layer 2
+		item_picked_up()
 		item_data.use()
-	item_picked_up()
 	pass
 
 # only called if there was room in inventory

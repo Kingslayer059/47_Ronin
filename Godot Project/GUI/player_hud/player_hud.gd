@@ -6,6 +6,9 @@ extends CanvasLayer
 func _ready():
 	update_ronin(PlayerManager.ronin_index)
 	update_coins(PlayerManager.coins)
+	
+	PlayerManager.coins_changed.connect(update_coins)
+	PlayerManager.ronin_change.connect(update_ronin)
 
 func update_ronin(index):
 	ronin_label.text = "%d" % index

@@ -16,8 +16,8 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("Player") and item_data:  # check for player collision layer 2
-		item_picked_up()
 		item_data.use()
+		item_picked_up()
 	pass
 
 # only called if there was room in inventory

@@ -39,9 +39,18 @@ func drop_items() -> void:
 		if drop_data == null or drop_data.item == null:
 			continue
 		var drop_count: int = drop_data.get_drop_count()
+		
+		var spacing: float = 12.0
+		var start_offset: float = -((drop_count - 1) * spacing) / 2.0
 		for i in range(drop_count):
 			var drop: ItemPickup = PICKUP.instantiate()
 			drop.item_data = drop_data.item
-			drop.global_position = global_position
+			
+			var offset_x = start_offset + i * spacing
+			drop.global_position = global_position + Vector2(offset_x, 0)
+			
 			get_parent().call_deferred("add_child", drop)
+			
+			var dir = sign(offset_x) if offset_x != 0 else randf_range(-1, 1)
+			drop.velocity = Vector2(dir * randf_range(30, 50), 0)
 	pass

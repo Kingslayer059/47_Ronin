@@ -4,8 +4,14 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vggup"]
 
-[node name="ItemPickup" type="Node2D" unique_id=1427862309]
+[node name="ItemPickup" type="CharacterBody2D" unique_id=1224471695]
+collision_layer = 0
+collision_mask = 17
+motion_mode = 1
 script = ExtResource("1_ib4el")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1776723248]
+shape = SubResource("CircleShape2D_vggup")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1627022383]
 collision_layer = 3

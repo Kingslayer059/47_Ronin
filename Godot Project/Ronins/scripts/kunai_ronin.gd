@@ -83,8 +83,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			GameEvents.interact.emit()
 		if Input.is_action_just_pressed("noclip"):
-			gravity = 0
-			get_node("CollisionShape2D").disabled = true
+			GameEvents.floor_count = 0
+			get_tree().change_scene_to_file("res://Floor2/scenes/floor2.tscn")
 			
 		if Input.is_action_just_pressed("attack"):
 			if Input.is_action_pressed("ui_up"):

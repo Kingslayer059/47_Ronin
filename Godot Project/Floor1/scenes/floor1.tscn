@@ -12,11 +12,11 @@ script = ExtResource("1_3lov3")
 [node name="RoomManager" type="Node2D" parent="." unique_id=1420800065]
 script = ExtResource("2_j6tjg")
 
-[node name="EnemyManager" type="Node2D" parent="." unique_id=720214965]
-script = ExtResource("3_3lov3")
-
 [node name="SpecialManager" type="Node2D" parent="." unique_id=895355054]
 script = ExtResource("4_sx3xn")
 
 [node name="BossManager" type="Node2D" parent="." unique_id=591040355]
 script = ExtResource("5_0ejxw")
+
+[node name="EnemyManager" type="Node2D" parent="." unique_id=720214965]
+script = ExtResource("3_3lov3")

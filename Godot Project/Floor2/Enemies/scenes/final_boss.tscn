@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ninybmteahjb"]
 
-[ext_resource type="Script" uid="uid://b3w511unskqk1" path="res://Floor2/Enemies/scripts/final_boss.gd" id="1_htdw3"]
+[ext_resource type="Script" path="res://Floor2/Enemies/scripts/final_boss.gd" id="1_htdw3"]
 [ext_resource type="Shader" uid="uid://ct86xqawakua3" path="res://misc/scripts/hit_effect.gdshader" id="2_pm64g"]
 [ext_resource type="Texture2D" uid="uid://d2mo6oxe7763t" path="res://Floor2/Enemies/sprites/boss/attack.png" id="3_kmym6"]
 [ext_resource type="Texture2D" uid="uid://0sgt1d3u3tdr" path="res://Floor2/Enemies/sprites/boss/up_attack.png" id="4_kmym6"]

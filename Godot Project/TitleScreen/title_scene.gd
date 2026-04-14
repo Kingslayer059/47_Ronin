@@ -2,10 +2,10 @@ extends Node2D
 
 
 
-@onready var button_start = $CanvasLayer/Control/ButtonStart
-@onready var button_exit = $CanvasLayer/Control/ButtonExit
-@onready var button_credit = $CanvasLayer/Control/ButtonCredit
-@onready var button_intro = $CanvasLayer/Control/ButtonIntro
+@onready var button_start = $CanvasLayer/Control/VBoxContainer/ButtonStart
+@onready var button_exit = $CanvasLayer/Control/VBoxContainer/ButtonExit
+@onready var button_credit = $CanvasLayer/Control/VBoxContainer/ButtonCredit
+@onready var button_intro = $CanvasLayer/Control/VBoxContainer/ButtonIntro
 
 func _ready():
 	PlayerHud.visible = false

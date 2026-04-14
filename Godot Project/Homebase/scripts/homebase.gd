@@ -15,7 +15,10 @@ func _process(delta: float) -> void:
 				$Background/HomebaseRonin.moveable = false
 				near = "in gacha"
 			"in gacha":
-				$Gacha.spin()
+				if PlayerManager.coins != 0:
+					$Gacha.spin()
+					PlayerManager.coins -= 1
+				
 			"door":
 				SceneLoader.change_scene("res://Floor1/scenes/floor1.tscn")
 

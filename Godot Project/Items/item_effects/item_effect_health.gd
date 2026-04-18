@@ -6,7 +6,8 @@ class_name ItemEffectHealth extends ItemEffect
 
 func use():
 	# change functionality to whatever we need
-	PlayerManager.player.increase_health(health_inc_amt)
+	#PlayerManager.player.increase_health(health_inc_amt)
 	# TODO: play sound?
+	pass
 
 # the apple does this

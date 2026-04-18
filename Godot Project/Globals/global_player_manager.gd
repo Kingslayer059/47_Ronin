@@ -6,6 +6,7 @@ const INVENTORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/p
 var player
 var unlocked_ronins = []
 var locked_ronins = []
+var alive_ronins = []
 var rng = RandomNumberGenerator.new()
 
 var max_ronin: int = 1
@@ -49,6 +50,8 @@ func _on_player_died(_ronin):
 	ronin_change.emit(ronin_index)
 	if(ronin_index == 0):
 		reset_ronin()
+		GameEvents.floor_count = 0
+		GameEvents.next_floor_level = 0
 		get_tree().change_scene_to_file("res://Homebase/scenes/homebase.tscn")
 		
 func add_ronin():

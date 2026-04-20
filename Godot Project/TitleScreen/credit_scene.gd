@@ -3,7 +3,9 @@ extends Node2D
 @onready var button_back = $CanvasLayer/Control/ButtonBack
 
 func _ready():
+	PlayerHud.visible = false
 	back_button_pressed()
+	$AnimationPlayer.play("scroll")
 	pass
 
 func back_button_pressed():

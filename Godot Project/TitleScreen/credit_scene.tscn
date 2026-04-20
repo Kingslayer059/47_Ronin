@@ -1,6 +1,45 @@
 [gd_scene format=3 uid="uid://cm7es1rslpdwr"]
 
 [ext_resource type="Script" uid="uid://bwpepbqus5jbk" path="res://TitleScreen/credit_scene.gd" id="1_u1vek"]
+[ext_resource type="FontFile" uid="uid://cy1deowoc4kax" path="res://TitleScreen/pixelfont.png" id="2_658ex"]
+
+[sub_resource type="Animation" id="Animation_78feb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Names:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-205, -384)]
+}
+
+[sub_resource type="Animation" id="Animation_bp1gq"]
+resource_name = "scroll"
+length = 10.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Names:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-80, -380), Vector2(-80, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipqhc"]
+_data = {
+&"RESET": SubResource("Animation_78feb"),
+&"scroll": SubResource("Animation_bp1gq")
+}
 
 [node name="CreditScene" type="Node2D" unique_id=1200056521]
 script = ExtResource("1_u1vek")
@@ -22,38 +61,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.45882353)
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1703290657]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_right = 41.0
-offset_bottom = 62.0
-grow_horizontal = 2
-text = "Credits"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/Control" unique_id=1450517005]
+[node name="Names" type="Label" parent="CanvasLayer/Control" unique_id=1450517005]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -374.5
-offset_top = -209.0
-offset_right = 374.5
-offset_bottom = 209.0
+offset_left = -365.0
+offset_top = -474.0
+offset_right = 121.00043
+offset_bottom = -113.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Credits
+theme_override_colors/font_color = Color(0.019607844, 0.85882354, 1, 1)
+theme_override_fonts/font = ExtResource("2_658ex")
+theme_override_font_sizes/font_size = 11
+text = "Special Thanks to Dr. Matthieu Felt
 
-Temp pickup assets: Free Pixel Food! by Henry Software
 
-Pixel font: Libre Quake"
+
+BG Developers :
+William Leva
+Truman Moore
+Yutaka Stephens
+
+
+
+Character and Enemy Art: 
+Truman Moore
+
+Background Art: 
+William Leva
+
+
+
+Temp pickup assets: 
+Free Pixel Food! by Henry Software
+
+
+
+Pixel font: 
+Libre Quake"
 horizontal_alignment = 1
 
 [node name="ButtonBack" type="Button" parent="CanvasLayer/Control" unique_id=973375870]
@@ -61,8 +112,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
-offset_right = 116.0
+offset_top = -180.0
+offset_right = 41.0
+offset_bottom = -161.0
 grow_vertical = 0
-text = "back
+theme_override_fonts/font = ExtResource("2_658ex")
+theme_override_font_sizes/font_size = 11
+text = "Back
 "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1342976676]
+libraries/ = SubResource("AnimationLibrary_ipqhc")

@@ -7,7 +7,7 @@ var player
 var unlocked_ronins = []
 var locked_ronins = []
 var run_ronins = []
-var alive_ronins = []
+var current_ronin : PackedScene
 var rng = RandomNumberGenerator.new()
 
 var max_ronin: int = 1
@@ -22,9 +22,8 @@ func _ready():
 	rng.randomize()
  
 func spawn_player(parent, spawn_position):
-	
-		var scene = load(run_ronins.pop_at(randi() % run_ronins.size())) if run_ronins.size() > 1 else load(run_ronins[0])
-		print(scene)
+		var scene = load(run_ronins.pop_at(randi() % run_ronins.size())) if run_ronins.size() > 0 else current_ronin
+		current_ronin = scene
 		player = scene.instantiate()
 		player.name = "Player"
 		player.spawn_position = spawn_position
@@ -48,7 +47,7 @@ func load_ronins(path: String) -> Array:
 	return files
 
 func load_ronins_for_run() -> void:
-	run_ronins = unlocked_ronins;
+	run_ronins = unlocked_ronins.duplicate();
 
 func _on_player_died(_ronin):
 	ronin_index -= 1

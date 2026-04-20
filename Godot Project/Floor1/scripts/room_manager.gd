@@ -1,4 +1,5 @@
 extends Node2D
+
 @onready var top_layer = {
 	"earth" : load_rooms("res://Floor1/scenes/Rooms/top_layer/earth/"),
 	"midair" : load_rooms("res://Floor1/scenes/Rooms/top_layer/midair/")
@@ -239,8 +240,10 @@ func room_generation() -> Array:
 	var spawn_point = Vector2(0, 0)
 	var grid_check_queue = []
 	var visited = []
+	var attempts = 0
 	while !visited.has(start_end_location[1]) or end_invalid:
-		#dprint("Stuck in Loop")
+		attempts += 1
+		print(attempts)
 		start_end_location = default_grid()
 		end_coords = start_end_location[1]
 		end_invalid = false
@@ -255,7 +258,7 @@ func room_generation() -> Array:
 			var y = curr.y
 			var directions = [[x, y-1, "top"], [x+1, y, "right"], [x, y+1, "bottom"], [x-1, y, "left"]]
 			for pairing in directions:
-				if pairing[0] >= 0 and pairing[1] >= 0 and !visited.has(Vector2(pairing[0], pairing[1])) and grid[y][x].get_node("room_info").get(pairing[2]):
+				if pairing[0] >= 0 and pairing[0] < grid_w and pairing[1] >= 0 and pairing[1] < grid_h and !visited.has(Vector2(pairing[0], pairing[1])) and grid[y][x].get_node("room_info").get(pairing[2]):
 					visited.push_back(Vector2(pairing[0], pairing[1]))
 					grid_check_queue.push_back(Vector2(pairing[0], pairing[1]))
 	GameEvents.next_floor_level = end_coords.y

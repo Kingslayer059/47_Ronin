@@ -143,16 +143,10 @@ func generate_grid(x, y, section, _prior):
 	#Continue Traversing grid
 	directions.shuffle()
 	for pairing in directions:
-		#print("Begin Pairing ", selection)
 		if pairing[0] >= 0 and pairing[0] < grid_w and pairing[1] >= 0 and pairing[1] < grid_h:
 			curr["connected"] = grid[pairing[1]][pairing[0]].get_node("room_info").section == section
-			if y != 0 and !curr["connected"]:
-				selection = search(selection, pairing[2], false)
 			if (y == 0 or curr["connected"]) and grid[pairing[1]][pairing[0]].get_node("room_info").keyword == "Placeholder":
-				selection = search(selection, pairing[2], polarity)
-				#print("Recursion")
 				generate_grid(pairing[0], pairing[1], grid[pairing[1]][pairing[0]].get_node("room_info").section, curr)
-				#print("Finish Recursion")
 	
 func search(array, attribute, polarity) -> Array:
 	var trimmed = []

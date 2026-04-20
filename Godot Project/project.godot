@@ -12,7 +12,7 @@ config_version=5
 
 config/name="47_Ronin"
 run/main_scene="uid://dwjh6c8q4ioqn"
-config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]

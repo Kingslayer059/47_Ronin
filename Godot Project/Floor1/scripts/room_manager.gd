@@ -69,6 +69,10 @@ func cache_all_rooms():
 		room_node.free()
 
 func generate_grid(x, y, section, _prior):
+	print("generate_grid called: ", x, ", ", y)
+	if grid[y][x].get_node("room_info") == null:
+		print("NULL room_info at ", x, ", ", y)
+		return
 	if Vector2(x, y) == end_coords:
 		end_found = true
 	if section == "midair" and y != 0:
@@ -174,7 +178,9 @@ func default_grid() -> Array:
 	for row in range(0, grid_h):
 		grid.push_back([])
 		for col in range(0, grid_w):
-			grid[row].push_back(load("res://Floor1/scenes/Rooms/Room_Placeholder.tscn").instantiate())
+			var placeholder = load("res://Floor1/scenes/Rooms/Room_Placeholder.tscn").instantiate()
+			add_child(placeholder) 
+			grid[row].push_back(placeholder)
 			grid[row][col].position.x = room_w * col
 	var temp = range(1, grid_w-2)
 	for i in range(0, grid_w/3):
@@ -217,6 +223,10 @@ func default_grid() -> Array:
 	#print("Section of Start: ", grid[0][temp].get_node("room_info").section)
 	var end_vertical = rng.randi_range(0, grid_h-1)
 	var end_horizontal = rng.randi_range(0, grid_w-1)
+	
+	var max_possible_distance = grid_w + grid_h - 2
+	grid_l = min(grid_l, max_possible_distance - 1)
+	
 	while(grid[end_vertical][end_horizontal].get_node("room_info").section != "earth" or abs(end_horizontal - start_horizontal) + abs(end_vertical - start_vertical) < grid_l):
 		end_vertical = rng.randi_range(0, grid_h-1)
 		end_horizontal = rng.randi_range(0, grid_w-1)
@@ -238,6 +248,13 @@ func room_generation() -> Array:
 	while !visited.has(start_end_location[1]) or end_invalid:
 		attempts += 1
 		print(attempts)
+		
+		for row in grid:
+			for room in row:
+				if is_instance_valid(room):
+					room.queue_free()
+		grid = []
+	
 		start_end_location = default_grid()
 		end_coords = start_end_location[1]
 		end_invalid = false
